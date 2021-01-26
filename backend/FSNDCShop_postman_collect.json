@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "0a49e7be-349a-4fa3-a9db-1d77997cdc69",
+		"name": "FSND Coffee Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "/drinks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks-detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:5000/drinks/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://127.0.0.1:5000/drinks"
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:5000/drinks/1"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik90SGI0V3NmcXFEQ05hS250cnpnSSJ9.eyJpc3MiOiJodHRwczovL2Rldi05NzJiamdzai5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWZmZWI4ZDkwMzdhYzIwMDc0YjQ0NjI5IiwiYXVkIjoiZHJpbmtzIiwiaWF0IjoxNjExNjc0MDE4LCJleHAiOjE2MTE3NjA0MTgsImF6cCI6IlprOXROOUZpc1FTZjMxeDBxNXhGSnhYVXBHNjF4UzVmIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.OTbFmsFBvs_xyPZHuBVqEexhf7g3C_ddKIYnj704tMAs0LYreafjUsWMfPIYu6V-JXMoSJU70LFgrNpufnFgXT6EZpYp6XCMkRIAfDx185asBUQsNOxJp9DJfbjCseawhx2ZuyBN5rjHvYB5avQGZNnYamUd9TOdGfndYmGi_IZtJnMvUu1IPxMuJtiIcd6u8r-c_0rdAyQAjRVw5jCuCXs_T4IQEATNf2mTVFu7q2WzsJ0jcn3g57wxVfQSMT6J21FoXOYjKSp3JvQpJtHY6ZuABTpR-HEZZ3x_JpwFwrHiMzOE0Kz_2vtFzLTvq4qhqVjAnUNh38kA40qK0t5GHQ"
+				}
+			}
+		},
+		{
+			"name": "barista",
+			"item": [
+				{
+					"name": "/drinks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/drinks-detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik90SGI0V3NmcXFEQ05hS250cnpnSSJ9.eyJpc3MiOiJodHRwczovL2Rldi05NzJiamdzai5ldS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWZmODI0ZWM5YWY0YmYwMDc2MmMyOTIxIiwiYXVkIjoiZHJpbmtzIiwiaWF0IjoxNjExNjczODM5LCJleHAiOjE2MTE3NjAyMzksImF6cCI6IlprOXROOUZpc1FTZjMxeDBxNXhGSnhYVXBHNjF4UzVmIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.Yyy9HRpTJhNN30WNbMOSbc97AgUwp41_sfHM8cUYBrkbjp5cKdJzBz6zLLWxjZg8IB3MR8rwHCK-Knb86EoHgJt-VM39UDqSW_p1tko2_TTZzSYVCRvOD1-YxMjjsczNnHYQdJkw7eahXEOabW_6DUpX4NleZuuD5n2K0oqMwdF64qosro4BjACG2qsKST2TgLoXL2lT6M6uyl4Oprgs8HYjI6lUFjBM2fPxPMe6gzuui8abWnyqQneLg2rzulAsgmriYUHhlJylFZItPoyYnCSaMNL8hXCpyaC-k43to_p0b8CUb3rieHYCSHcWhczAkrvBu1nZln-WHQO8mdkhqg"
+				}
+			}
+		},
+		{
+			"name": "/drinks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		}
+	]
+}
