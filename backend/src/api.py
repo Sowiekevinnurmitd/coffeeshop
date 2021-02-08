@@ -29,13 +29,14 @@ CORS(app)
 '''
 @app.route('/drinks')
 def get_drinks():
-    drinks = list(map(Drink.short, Drink.query.all()))
-    result = {
-    'success': True,
-    'drinks': drinks
-    }
+    drinks = Drink.query.all()
 
-    return jsonify(result)
+    formatted_drinks = [drink.short() for drink in drinks]
+
+    return jsonify({
+        'success': True,
+        'drinks': formatted_drinks
+    })
 #def drinks():
  #   drinks = Drink.query.all()
 #
@@ -77,45 +78,49 @@ def drinks_detail(payload):
 @app.route('/drinks', methods=['POST'])
 @requires_auth('post:drinks')
 def create_drink(payload):
-    body = request.get_json()
-    new_title = body.get('title', None)
-    new_recipe = body.get('recipe', None)
-
-    try: 
-        drink = Drink(title = new_title,
-            recipe = new_recipe)
+    data = dict(request.form or request.json or request.data)
+    drink = Drink(title=data.get('title'),
+                  recipe=data.get('recipe') if type(data.get('recipe')) == str
+                  else json.dumps(data.get('recipe')))
+    try:
         drink.insert()
-        drinks = Drinks.query.all()
-        return jsonify({
+        return json.dumps({
             'success': True, 
-            'drinks':  [drink.long() for drink in drinks]  
+            'drink': drink.long()
             }), 200
-    except: 
-        abort(400)
+    except:
+        return json.dumps({
+            'success': False,
+            'error': "An Error Occurred"
+        }), 500
 
 
 @app.route('/drinks/<id>', methods=['PATCH'])
 @requires_auth('patch:drinks')
 def update_drink(payload, id):
     body = request.get_json()
-    drink = Drink.query.filter(Drink.id == id ).one_or_none()
+
+    drink = Drink.query.filter(Drink.id == id).one_or_none()
 
     if not drink:
         abort(404)
-    try:
-        req_title = body.get('title')
-        req_recipe = body.get('recipe')
-        if req_title:
-            drink.title = req_title
 
-        if req_recipe:
-            drink.recipe = json.dumps(body['recipe'])
+    try:
+        drink.title = body['title']
+        drink.recipe = body['recipe']
 
         drink.update()
-    except BaseException:
-        abort(400)
 
-    return jsonify({'success': True, 'drinks': [drink.long()]}), 200
+        return jsonify({
+            'success': True,
+            'drinks': [drink.long()]
+        })
+
+    except Exception:
+        abort(422)
+
+
+
 
 '''
 @TODO implement endpoint
@@ -131,7 +136,7 @@ def update_drink(payload, id):
 @requires_auth('delete:drinks')
 def delete_drink(payload, id):
     try: 
-        drink = Drink.query.filter(Drinks.id == id).one_or_none()
+        drink = Drink.query.filter(Drink.id == id).one_or_none()
 
         if drink is None: 
             abort(404)
