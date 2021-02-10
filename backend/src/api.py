@@ -89,15 +89,33 @@ def create_drink(payload):
             'drink': drink.long()
             }), 200
     except:
-        return json.dumps({
-            'success': False,
-            'error': "An Error Occurred"
-        }), 500
+        abort(422)
 
 
 @app.route('/drinks/<id>', methods=['PATCH'])
 @requires_auth('patch:drinks')
 def update_drink(payload, id):
+    body = request.get_json()
+    title_update = body.get('title')
+    recipe_update = body.get('recipe')
+    drink = Drink.query.filter(Drink.id == id).one_or_none()
+    print(drink)
+    if drink is None:
+        abort(404)
+    if title_update:
+        drink.title = title_update
+    if recipe_update:
+        drink.recipe = recipe_update
+    drink.update()
+
+    return jsonify({
+        'success': True,
+        'drinks': drink.long()
+    })
+
+
+
+'''    
     body = request.get_json()
 
     drink = Drink.query.filter(Drink.id == id).one_or_none()
@@ -119,7 +137,7 @@ def update_drink(payload, id):
     except Exception:
         abort(422)
 
-
+'''
 
 
 '''
